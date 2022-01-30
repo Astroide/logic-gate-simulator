@@ -1,3 +1,4 @@
+const RADIUS = 15;
 export class Line {
     constructor(x1, y1, x2, y2) {
         this.points = [];
@@ -80,14 +81,14 @@ export class Line {
             let end = this.points[i + 1];
             let angle = Math.atan2(end.y - start.y, end.x - start.x);
             let length = Math.sqrt(Math.pow(end.y - start.y, 2) + Math.pow(end.x - start.x, 2));
-            length -= 10;
-            let endX = i == this.points.length - 2 ? end.x : (start.x + length * Math.cos(angle));
-            let endY = i == this.points.length - 2 ? end.y : (start.y + length * Math.sin(angle));
+            length -= RADIUS;
+            let endX = /*i == (this.points.length - 2) ? end.x : */(start.x + length * Math.cos(angle));
+            let endY = /*i == (this.points.length - 2) ? end.y : */(start.y + length * Math.sin(angle));
             let startX, startY;
             if (i != 0) {
                 let angle = Math.atan2(end.y - start.y, end.x - start.x) + Math.PI;
                 let length = Math.sqrt(Math.pow(end.y - start.y, 2) + Math.pow(end.x - start.x, 2));
-                length -= 10;
+                length -= RADIUS;
                 startX = end.x + length * Math.cos(angle);
                 startY = end.y + length * Math.sin(angle);
             } else {
@@ -106,7 +107,7 @@ export class Line {
             this.arcs[i - 1].setAttribute('stroke', this._color || 'black');
             let x = this.points[i].x;
             let y = this.points[i].y;
-            let radius = 10;
+            let radius = RADIUS;
             let startAngle = Math.atan2(this.points[i - 1].y - y, this.points[i - 1].x - x);
             let endAngle = Math.atan2(this.points[i + 1].y - y, this.points[i + 1].x - x);
             let startX = x + radius * Math.cos(startAngle);
