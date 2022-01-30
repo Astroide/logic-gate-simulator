@@ -1,34 +1,13 @@
 import { strings } from './languages.js';
+import { Line } from './line.js';
 document.title = strings.title;
-const canvas = document.createElement('canvas');
-const ctx = canvas.getContext('2d');
-document.body.appendChild(canvas);
-let width = canvas.width = window.innerWidth;
-let height = canvas.height = window.innerHeight;
-let screen = 'start';
-
-function redraw() {
-    ctx.clearRect(0, 0, width, height);
-    ctx.fillStyle = '#282828';
-    ctx.fillRect(0, 0, width, height);
-    if (screen == 'start') {
-        ctx.fillStyle = '#fff';
-        ctx.font = '30px Arial';
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'middle';
-        ctx.fillText(strings.title, width / 2, height * 0.3);
-    }
-}
-
-addEventListener('resize', () => {
-    width = canvas.width = window.innerWidth;
-    height = canvas.height = window.innerHeight;
-    redraw();
+const line = new Line(10, 10, 100, 100);
+line.addPoint(0, 0);
+line.addPoint(100, 100);
+line.addPoint(100, 200);
+line.addPoint(300, 500);
+addEventListener('mousemove', e => {
+    line.points[4].x = e.clientX;
+    line.points[4].y = e.clientY;
+    line.color = e.clientX > window.innerWidth / 2 ? 'red' : 'blue';
 });
-
-function updateScreen() {
-    redraw();
-    requestAnimationFrame(updateScreen);
-}
-
-updateScreen();
