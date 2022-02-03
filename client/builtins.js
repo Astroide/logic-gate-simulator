@@ -19,6 +19,16 @@ export class XorChip extends Chip {
         this.outputs[0].receive((this.inputs[0].value || this.inputs[1].value) && !(this.inputs[0].value && this.inputs[1].value));
     }
 }
+export class XnorChip extends Chip {
+    constructor() {
+        this.name = strings.gates.XNOR;
+        this.numberOfInputs = 2;
+        this.numberOfOutputs = 1;
+    }
+    process() {
+        this.outputs[0].receive(this.inputs[0].value == this.inputs[1].value);
+    }
+}
 export class OrChip extends Chip {
     constructor() {
         this.name = strings.gates.OR;

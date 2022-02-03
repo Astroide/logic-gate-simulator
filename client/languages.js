@@ -11,6 +11,7 @@ export const strings = preferredLanguage == 'fr' ? {
         NOT: 'NON',
         NAND: 'NON ET',
         NOR: 'NON OU',
+        XNOR: 'NON OU exclusif',
     }
 } : {
     title: 'Logic Gate Simulator',
@@ -21,5 +22,6 @@ export const strings = preferredLanguage == 'fr' ? {
         NOT: 'NOT',
         NAND: 'NAND',
         NOR: 'NOR',
+        XNOR: 'XNOR',
     }
 };
