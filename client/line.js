@@ -41,7 +41,6 @@ export class Line {
 
     update() {
         if (this.points.length < 2) return;
-        console.log('update');
         if (!this.svg) {
             this.svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
             this.svg.style.position = 'fixed';
